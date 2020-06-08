@@ -27,6 +27,7 @@ toStartSoftware() {
     if [ $# -eq 2 ]; then
         case $1 in
         wechat) ;&
+        wxwork) ;&
         tim) ;&
         thunder) ;&
         qqmusic)
@@ -61,6 +62,9 @@ toRunSoftwareContainer() {
                 wechat)
                     appName='Wechat'
                     ;;
+                wxwork)
+                    appName='WXWork'
+                    ;;
                 tim)
                     appName='TIM'
                     ;;
@@ -85,6 +89,9 @@ toRunSoftwareContainer() {
             case $1 in
             wechat)
                 appName='Wechat'
+                ;;
+            wxwork)
+                appName='WXWork'
                 ;;
             tim)
                 appName='TIM'
@@ -115,6 +122,7 @@ toStopSoftware() {
     if [ $# -eq 1 ]; then
         case $1 in
         wechat) ;&
+        wxwork) ;&
         tim) ;&
         thunder) ;&
         qqmusic)
