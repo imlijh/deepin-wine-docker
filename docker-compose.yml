@@ -23,3 +23,4 @@ services:
     volumes:
       - "/tmp/.X11-unix:/tmp/.X11-unix"
       - "$HOME/Documents/WXWork:/home/files"
+    shm_size: 2g
