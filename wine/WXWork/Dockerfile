@@ -15,7 +15,6 @@ RUN mkdir -p /etc/apt/sources.list.d \
 
 RUN apt update \
     && apt upgrade -y \
-    && apt --reinstall install -y python3-apt \
     && apt install -y  --allow-downgrades perl-base=5.24.1-3+deb9u5 \
     && apt install -y perl=5.24.1-3+deb9u5 \
     && apt install -y udis86 libgif7 libreadline7 libpng16-16 libjpeg62-turbo libgnutls30 libgstreamer1.0-0 libgstreamer-plugins-base1.0-0 zenity fonts-wqy-microhei fonts-wqy-zenhei firefox
