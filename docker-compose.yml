@@ -3,9 +3,8 @@ services:
   pulseaudio:
     build:
       context: ./pulseaudio-server
-      network: deepin-wine-docker_default
     devices: 
-      - "/dev/snd"
+      - "/dev/snd:/dev/snd"
     expose: 
       - "4713"
     volumes: 
@@ -14,13 +13,14 @@ services:
   wxwork:
     build:
       context: ./wine/WXWork
-      network: deepin-wine-docker_default
+    depends_on:
+      - pulseaudio
     environment:
-      - "DISPLAY=unix$DISPLAY"
+      - DISPLAY=unix$DISPLAY
       - GDK_SCALE
       - GDK_DPI_SCALE
-      - "PULSE_SERVER=tcp:pulseaudio:4713"
+      - PULSE_SERVER=tcp:pulseaudio:4713
     volumes:
-      - "/tmp/.X11-unix:/tmp/.X11-unix"
+      - "/tmp/.X11-unix:/tmp/.X11-unix:ro"
       - "$HOME/Documents/WXWork:/home/files"
     shm_size: 2g
