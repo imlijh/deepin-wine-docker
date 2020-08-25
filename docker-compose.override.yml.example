@@ -6,6 +6,8 @@ services:
       args:
         - HTTP_PROXY=http://127.0.0.1:3128
         - HTTPS_PROXY=http://127.0.0.1:3128
+    environment:
+      - TZ=Asia/Shanghai
   wxwork:
     build:
       network: host

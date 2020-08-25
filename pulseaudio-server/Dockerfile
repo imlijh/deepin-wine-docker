@@ -1,18 +1,17 @@
 FROM ubuntu:18.04
 
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
-ENV USER pulseaudio
-ENV UID 1000
-ENV GROUPS audio
-ENV HOME /home/${USER}
+ENV USER=pulseaudio \
+    UID=1000 \
+    GROUPS=audio
+ENV HOME=/home/${USER} \
+    TZ=UTC-8
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list \
-    && apt update && apt upgrade -y
-
-RUN apt install -y pulseaudio pulseaudio-utils tzdata\
-    && apt -y autoremove \
-    && apt -y clean
+RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y pulseaudio pulseaudio-utils tzdata \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY [ "./default.pa", "./client.conf", "./daemon.conf", "/etc/pulse/" ]
 
@@ -21,9 +20,6 @@ RUN useradd -u ${UID} -m -d ${HOME} -s /usr/sbin/nologin ${USER} \
     && chmod 0644 -- /etc/pulse/* \
     && mkdir -p ${HOME}/.config/pulse \
     && chown -Rh ${USER}:${USER} -- ${HOME}
-
-RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && dpkg-reconfigure -f noninteractive tzdata
 
 WORKDIR ${HOME}
 USER ${USER}
