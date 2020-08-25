@@ -22,5 +22,5 @@ services:
       - PULSE_SERVER=tcp:pulseaudio:4713
     volumes:
       - "/tmp/.X11-unix:/tmp/.X11-unix:ro"
-      - "$HOME/Documents/WXWork:/home/files"
+      - "$HOME/Documents/WXWork:/root"
     shm_size: 2g
