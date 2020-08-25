@@ -27,13 +27,13 @@ RUN apt-get update \
     deepin-wine-plugin deepin-wine-plugin-virtual deepin-wine-uninstaller \
     && rm -rf /var/lib/apt/lists/*
 
-ENV LC_CTYPE=zh_CN.UTF-8 XMODIFIERS="@im=ibus"
+ENV LC_CTYPE=zh_CN.UTF-8 \
+    LANGUAGE=zh_CN.UTF-8 \
+    LANG=zh_CN.UTF-8 \
+    TZ=UTC-8
 
 RUN locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
     && update-locale LANG=zh_CN.UTF-8
-
-RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get update \
     && apt-get install -y deepin.com.weixin.work \

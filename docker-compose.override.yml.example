@@ -12,3 +12,8 @@ services:
       args:
         - HTTP_PROXY=http://127.0.0.1:3128
         - HTTPS_PROXY=http://127.0.0.1:3128
+    environment:
+      - QT_IM_MODULE=fcitx
+      - GTK_IM_MODULE=fcitx
+      - XMODIFIERS=@im=fcitx
+      - TZ=Asia/Shanghai

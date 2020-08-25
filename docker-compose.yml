@@ -19,6 +19,9 @@ services:
       - DISPLAY=unix$DISPLAY
       - GDK_SCALE
       - GDK_DPI_SCALE
+      - GTK_IM_MODULE
+      - QT_IM_MODULE
+      - XMODIFIERS
       - PULSE_SERVER=tcp:pulseaudio:4713
     volumes:
       - "/tmp/.X11-unix:/tmp/.X11-unix:ro"
