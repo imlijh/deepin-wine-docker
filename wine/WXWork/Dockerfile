@@ -30,7 +30,7 @@ RUN apt-get update \
 ENV LC_CTYPE=zh_CN.UTF-8 \
     LANGUAGE=zh_CN.UTF-8 \
     LANG=zh_CN.UTF-8 \
-    TZ=UTC-8
+    TZ=Asia/Shanghai
 
 RUN locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
     && update-locale LANG=zh_CN.UTF-8

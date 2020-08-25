@@ -6,7 +6,7 @@ ENV USER=pulseaudio \
     UID=1000 \
     GROUPS=audio
 ENV HOME=/home/${USER} \
-    TZ=UTC-8
+    TZ=Asia/Shanghai
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && apt-get update \
