@@ -11,7 +11,7 @@ RUN apt-get update \
 
 RUN mkdir -p /etc/apt/sources.list.d \
     && touch /etc/apt/sources.list.d/deepin.list \
-    && echo "deb [trusted=yes] https://mirrors.huaweicloud.com/deepin stable main contrib non-free" > /etc/apt/sources.list.d/deepin.list \
+    && echo "deb [trusted=yes] https://mirrors.aliyun.com/deepin stable main contrib non-free" > /etc/apt/sources.list.d/deepin.list \
     && dpkg --add-architecture i386
 
 RUN apt-get update \
