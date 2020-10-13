@@ -21,6 +21,9 @@ RUN useradd -u ${UID} -m -d ${HOME} -s /usr/sbin/nologin ${USER} \
     && mkdir -p ${HOME}/.config/pulse \
     && chown -Rh ${USER}:${USER} -- ${HOME}
 
+RUN ln -fs "/usr/share/zoneinfo/$TZ" /etc/localtime \
+    && dpkg-reconfigure -f noninteractive tzdata
+
 WORKDIR ${HOME}
 USER ${USER}
 VOLUME [ "/tmp", "${HOME}/.config/pulse" ]
